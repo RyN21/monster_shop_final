@@ -276,6 +276,17 @@
         null,
         null
       ],
+      "/Users/ryn/turing/2module/projects/monster_shop_final/spec/factories/discounts.rb": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        null,
+        null
+      ],
       "/Users/ryn/turing/2module/projects/monster_shop_final/spec/factories/items.rb": [
         null,
         1,
@@ -464,8 +475,15 @@
         null,
         1,
         null
+      ],
+      "/Users/ryn/turing/2module/projects/monster_shop_final/app/models/discount.rb": [
+        1,
+        null,
+        null,
+        null,
+        null
       ]
     },
-    "timestamp": 1596251042
+    "timestamp": 1596251984
   }
 }
