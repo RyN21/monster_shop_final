@@ -43,9 +43,9 @@ RSpec.describe "Edit discount" do
 
     click_link "Edit"
 
-    fill_in 'Name', with: "5% Bulk Discount"
-    fill_in 'Description', with: "Get 5% of any item when you purchase 20 or more of that item!"
-    fill_in 'Percent off', with: 5
+    fill_in 'Name', with: @discount_1.name
+    fill_in 'Description', with: @discount_1.description
+    fill_in 'Percent off', with: @discount_1.percent_off
     fill_in 'Minimum quantity', with: 30
 
     click_button "Submit"
