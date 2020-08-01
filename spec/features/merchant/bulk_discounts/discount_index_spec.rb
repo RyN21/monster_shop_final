@@ -29,21 +29,21 @@ RSpec.describe "Discount index page" do
     within "#discount-#{@discount_1.id}" do
       expect(page).to have_content(@discount_1.name)
       expect(page).to have_content(@discount_1.description)
-      expect(page).to have_content(@discount_1.percent)
+      expect(page).to have_content(@discount_1.percent_off)
       expect(page).to have_content(@discount_1.minimum_quantity)
     end
 
     within "#discount-#{@discount_2.id}" do
       expect(page).to have_content(@discount_2.name)
       expect(page).to have_content(@discount_2.description)
-      expect(page).to have_content(@discount_2.percent)
+      expect(page).to have_content(@discount_2.percent_off)
       expect(page).to have_content(@discount_2.minimum_quantity)
     end
 
     within "#discount-#{@discount_3.id}" do
       expect(page).to have_content(@discount_3.name)
       expect(page).to have_content(@discount_3.description)
-      expect(page).to have_content(@discount_3.percent)
+      expect(page).to have_content(@discount_3.percent_off)
       expect(page).to have_content(@discount_3.minimum_quantity)
     end
   end
