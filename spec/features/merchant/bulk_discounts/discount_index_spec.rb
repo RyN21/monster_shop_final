@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe "Discount index page" do
   before :each do
-    @merchant = create(:merchant)
+    @merchant   = create(:merchant)
     @merch_user = create(:user, merchant: @merchant, email: 'merchant@test.com', role: 1)
 
     @discount_1 = create(:discount)
@@ -18,28 +18,33 @@ RSpec.describe "Discount index page" do
   end
 
   it "merchant has link to discount index page" do
-
     click_link ("Discounts")
 
     expect(current_path).to eq("/merchant/discounts")
   end
 
   it "displays discount information" do
-
     visit '/merchant/discounts'
 
-    expect(page).to have_content()
+    within "#discount-#{@discount_1.id}" do
+      expect(page).to have_content(@discount_1.name)
+      expect(page).to have_content(@discount_1.description)
+      expect(page).to have_content(@discount_1.percent)
+      expect(page).to have_content(@discount_1.minimum_quantity)
+    end
+
+    within "#discount-#{@discount_2.id}" do
+      expect(page).to have_content(@discount_2.name)
+      expect(page).to have_content(@discount_2.description)
+      expect(page).to have_content(@discount_2.percent)
+      expect(page).to have_content(@discount_2.minimum_quantity)
+    end
+
+    within "#discount-#{@discount_3.id}" do
+      expect(page).to have_content(@discount_3.name)
+      expect(page).to have_content(@discount_3.description)
+      expect(page).to have_content(@discount_3.percent)
+      expect(page).to have_content(@discount_3.minimum_quantity)
+    end
   end
 end
-
-
-
-User Story 1.5 Discount index page displays attributes
-
-As a merchant employee
-visit ('/merchants/discounts')
-the page should display
-- name of the discount
-- discount description
-- discount percent
-- discount minimum quantity in order to receive discount
