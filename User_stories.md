@@ -32,6 +32,18 @@ I see a link to discounts page
 
 
 ================================================================================
+User Story 1.5 Discount index page displays attributes
+
+As a merchant employee
+visit ('/merchants/discounts')
+the page should display
+- name of the discount
+- discount description
+- discount percent
+- discount minimum quantity in order to receive discount
+
+
+================================================================================
 User Story 2, Add bulk discount
 
 As a merchant employee
@@ -49,6 +61,7 @@ when visiting ("/merchant/discounts/new")
 merchant can fill a form to create a new discount
 form fields to fill out:
 - discount name
+- discount description
 - discount percent
 - discount minimum quantity in order to receive discount
 
@@ -65,6 +78,7 @@ Discount name should link to discount show page
 click discount name
 page should show discount attributes
 - name
+- description
 - percent of discount
 - minimum quantity to receive discount
 - date discount was made
