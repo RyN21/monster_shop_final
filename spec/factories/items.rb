@@ -2,7 +2,7 @@
 FactoryBot.define do
   factory :item do
     merchant
-    name         { Faker::TvShows::SiliconValley.invention }
+    name         { Faker::JapaneseMedia::SwordArtOnline.item }
     description  { Faker::TvShows::MichaelScott.quote }
     price        { rand(1..100) }
     inventory    { rand(1..66) }
