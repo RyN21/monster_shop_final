@@ -3,6 +3,10 @@ class Merchant::DiscountsController < Merchant::BaseController
     @discounts = Discount.all
   end
 
+  def show
+
+  end
+
   def new
 
   end

@@ -39,6 +39,7 @@ Rails.application.routes.draw do
     get '/discounts', to: 'discounts#index', as: :discounts
     get '/discounts/new', to: 'discounts#new'
     post '/discounts', to: 'discounts#create'
+    get '/discounts/:id', to: 'discounts#show'
 
     resources :orders, only: :show
     resources :items, only: [:index, :new, :create, :edit, :update, :destroy]
