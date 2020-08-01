@@ -15,8 +15,7 @@ RSpec.describe 'User Order Show Page' do
       @order_1.order_items.create!(item: @ogre, price: @ogre.price, quantity: 2)
       @order_2.order_items.create!(item: @giant, price: @hippo.price, quantity: 2)
       @order_2.order_items.create!(item: @ogre, price: @hippo.price, quantity: 2)
-      # @bob     = create(:user)
-      # @order_3 = create(:order , user: @bob)
+      
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@user)
     end
 
@@ -30,10 +29,9 @@ RSpec.describe 'User Order Show Page' do
 
     it 'I see order information on the show page' do
       visit '/profile/orders'
-      save_and_open_page
 
       within "#order-#{@order_1.id}" do
-        expect(page).to have_link(@order_1.id)
+        expect(page).to have_link("#{@order_1.id}")
         expect(page).to have_content("Created On: #{@order_1.created_at}")
         expect(page).to have_content("Updated On: #{@order_1.updated_at}")
         expect(page).to have_content("Status: #{@order_1.status}")
@@ -42,7 +40,7 @@ RSpec.describe 'User Order Show Page' do
       end
 
       within "#order-#{@order_2.id}" do
-        expect(page).to have_link(@order_2.id)
+        expect(page).to have_link("#{@order_2.id}")
         expect(page).to have_content("Created On: #{@order_2.created_at}")
         expect(page).to have_content("Updated On: #{@order_2.updated_at}")
         expect(page).to have_content("Status: #{@order_2.status}")
