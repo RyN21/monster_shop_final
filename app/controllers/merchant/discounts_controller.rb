@@ -5,6 +5,7 @@ class Merchant::DiscountsController < Merchant::BaseController
 
   def show
     @discount = Discount.find(params[:id])
+    @merchant = current_user.merchant
   end
 
   def new
@@ -20,6 +21,10 @@ class Merchant::DiscountsController < Merchant::BaseController
       generate_flash(discount)
       redirect_to '/merchant/discounts/new'
     end
+  end
+
+  def edit
+    @discount = Discount.find(params[:id])
   end
 
   private

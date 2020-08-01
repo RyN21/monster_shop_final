@@ -40,7 +40,10 @@ Rails.application.routes.draw do
     get '/discounts/new', to: 'discounts#new'
     post '/discounts', to: 'discounts#create'
     get '/discounts/:id', to: 'discounts#show'
+    get '/discounts/:id/edit', to: 'discounts#edit'
+    post '/discounts/:id', to: 'discounts#update'
 
+    # resources :discounts
     resources :orders, only: :show
     resources :items, only: [:index, :new, :create, :edit, :update, :destroy]
     put '/items/:id/change_status', to: 'items#change_status'

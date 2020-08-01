@@ -4,3 +4,5 @@
 <p>Percent Off: <%= @discount.percent_off %></p>
 <p>Minimum quantity needed: <%= @discount.minimum_quantity %></p>
 <p>Date created: <%= @discount.date_created %></p>
+
+<%= link_to "Edit", "/merchant/discounts/#{@discount.id}/edit", method: :get %>

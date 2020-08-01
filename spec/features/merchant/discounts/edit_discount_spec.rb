@@ -5,9 +5,9 @@ RSpec.describe "Edit discount" do
     @merchant   = create(:merchant)
     @merch_user = create(:user, merchant: @merchant, email: 'merchant@test.com', role: 1)
 
-    @discount_1 = create(:discount)
-    @discount_2 = create(:discount)
-    @discount_3 = create(:discount)
+    @discount_1 = create(:discount, merchant: @merchant)
+    @discount_2 = create(:discount, merchant: @merchant)
+    @discount_3 = create(:discount, merchant: @merchant)
 
     visit '/login'
     within  "form" do
@@ -24,23 +24,24 @@ RSpec.describe "Edit discount" do
       click_link "Edit"
     end
 
-    expect(current_path).to eq("merchant/discounts/#{@discount_1.id}/edit")
+    expect(current_path).to eq("/merchant/discounts/#{@discount_1.id}/edit")
   end
 
   it "has a link to a edit discount page from SHOW page" do
+
     within "#discount-#{@discount_1.id}" do
       click_link "#{@discount_1.name}"
     end
-
+    # save_and_open_page
     click_link "Edit"
 
-    expect(current_path).to eq("merchant/discounts/#{@discount_1.id}/edit")
+    expect(current_path).to eq("/merchant/discounts/#{@discount_1.id}/edit")
   end
 
   it "has a pre populated form to edit discount information" do
-    within "#discount-#{@discount_1.id}" do
-      click_link "Edit"
-    end
+    visit "/merchant/discounts/#{@discount_1.id}"
+
+    click_link "Edit"
 
     fill_in 'Name', with: "5% Bulk Discount"
     fill_in 'Description', with: "Get 5% of any item when you purchase 20 or more of that item!"
