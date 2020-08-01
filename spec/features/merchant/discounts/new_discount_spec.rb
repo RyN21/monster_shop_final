@@ -28,10 +28,10 @@ RSpec.describe "Add bulk discount" do
   it "can add a new discount with discount form" do
     visit '/merchant/discounts/new'
 
-    fill_in :name, with: "5% Bulk Discount"
-    fill_in :description, with: "Get 5% of any item when you purchase 20 or more of that item!"
-    fill_in :percent_off, with: 5
-    fill_in :minimum_quantity, with: 20
+    fill_in 'Name', with: "5% Bulk Discount"
+    fill_in 'Description', with: "Get 5% of any item when you purchase 20 or more of that item!"
+    fill_in 'Percent off', with: 5
+    fill_in 'Minimum quantity', with: 20
 
     click_button "Create Discount"
 
