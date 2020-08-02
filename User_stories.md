@@ -179,3 +179,9 @@ User Story 13, Add total count discount method
 
 
 ================================================================================
+User story 14, When merchant is destroyed
+
+Discounts get destroyed with it
+
+
+================================================================================

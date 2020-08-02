@@ -42,6 +42,7 @@ Rails.application.routes.draw do
     get '/discounts/:id', to: 'discounts#show'
     get '/discounts/:id/edit', to: 'discounts#edit'
     post '/discounts/:id', to: 'discounts#update'
+    delete '/discounts/:id', to: 'discounts#destroy'
 
     # resources :discounts
     resources :orders, only: :show

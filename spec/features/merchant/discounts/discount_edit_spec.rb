@@ -21,7 +21,7 @@ RSpec.describe "Edit discount" do
 
   it "has a link to a edit discount page from INDEX page" do
     within "#discount-#{@discount_1.id}" do
-      click_link "Edit"
+      click_button "Edit"
     end
 
     expect(current_path).to eq("/merchant/discounts/#{@discount_1.id}/edit")
@@ -32,7 +32,7 @@ RSpec.describe "Edit discount" do
       click_link "#{@discount_1.name}"
     end
     # save_and_open_page
-    click_link "Edit"
+    click_button "Edit"
 
     expect(current_path).to eq("/merchant/discounts/#{@discount_1.id}/edit")
   end
@@ -40,7 +40,7 @@ RSpec.describe "Edit discount" do
   it "has a pre populated form to edit discount information" do
     visit "/merchant/discounts/#{@discount_1.id}"
 
-    click_link "Edit"
+    click_button "Edit"
 
     fill_in 'Name', with: @discount_1.name
     fill_in 'Description', with: @discount_1.description
