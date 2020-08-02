@@ -1,0 +1,9 @@
+<h2>Discount: <%= @discount.name %></h2>
+
+<p>Description: <%= @discount.description %></p>
+<p>Percent Off: <%= @discount.percent_off %></p>
+<p>Minimum quantity needed: <%= @discount.minimum_quantity %></p>
+<p>Date created: <%= @discount.date_created %></p>
+
+<%= button_to "Edit", "/merchant/discounts/#{@discount.id}/edit", method: :get %>
+<%= button_to "Delete", "/merchant/discounts/#{@discount.id}", method: :delete %>

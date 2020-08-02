@@ -35,6 +35,16 @@ Rails.application.routes.draw do
 
   namespace :merchant do
     get '/', to: 'dashboard#index', as: :dashboard
+
+    get '/discounts', to: 'discounts#index', as: :discounts
+    get '/discounts/new', to: 'discounts#new'
+    post '/discounts', to: 'discounts#create'
+    get '/discounts/:id', to: 'discounts#show'
+    get '/discounts/:id/edit', to: 'discounts#edit'
+    post '/discounts/:id', to: 'discounts#update'
+    delete '/discounts/:id', to: 'discounts#destroy'
+
+    # resources :discounts
     resources :orders, only: :show
     resources :items, only: [:index, :new, :create, :edit, :update, :destroy]
     put '/items/:id/change_status', to: 'items#change_status'
