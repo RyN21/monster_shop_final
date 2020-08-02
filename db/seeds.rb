@@ -11,33 +11,44 @@
 #   megan.items.create!(name: 'Giant', description: "I'm a Giant!", price: 50, image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTaLM_vbg2Rh-mZ-B4t-RSU9AmSfEEq_SN9xPP_qrA2I6Ftq_D9Qw', active: true, inventory: 3 )
 #   brian.items.create!(name: 'Hippo', description: "I'm a Hippo!", price: 50, image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTaLM_vbg2Rh-mZ-B4t-RSU9AmSfEEq_SN9xPP_qrA2I6Ftq_D9Qw', active: true, inventory: 3 )
 
-require "factory_bot_rails"
-include FactoryBot::Syntax::Methods
-
-Merchant.destroy_all
-Item.destroy_all
-
-#merchants
-bike_shop = Merchant.create(name: "Meg's Bike Shop", address: '123 Bike Rd.', city: 'Denver', state: 'CO', zip: 80203)
-dog_shop = Merchant.create(name: "Brian's Dog Shop", address: '125 Doggo St.', city: 'Denver', state: 'CO', zip: 80210)
-
-#bike_shop items
-tire = bike_shop.items.create(name: "Gatorskins", description: "They'll never pop!", price: 100, image: "https://www.rei.com/media/4e1f5b05-27ef-4267-bb9a-14e35935f218?size=784x588", inventory: 12)
-
-#dog_shop items
-pull_toy = dog_shop.items.create(name: "Pull Toy", description: "Great pull toy!", price: 10, image: "http://lovencaretoys.com/image/cache/dog/tug-toy-dog-pull-9010_2-800x800.jpg", inventory: 32)
-dog_bone = dog_shop.items.create(name: "Dog Bone", description: "They'll love it!", price: 21, image: "https://img.chewy.com/is/image/catalog/54226_MAIN._AC_SL1500_V1534449573_.jpg", active?:false, inventory: 21)
-
-@admin_user = create(:user , email: 'admin@test.com',  role: 2 )
-@default_user = create(:user)
-@merchant_user = create(:user, merchant: bike_shop, email: 'merchant@test.com', role: 1 )
-
-@order_1 = create(:order , user: @default_user, status: 1)
-@order_2 = create(:order , user: @default_user)
-@order_3 = create(:order , user: @default_user, status: 2)
-@order_4 = create(:order , user: @default_user, status: 1)
-@order_5 = create(:order , user: @default_user, status: 3)
-@order_6 = create(:order , user: @default_user)
-@order_7 = create(:order , user: @default_user, status: 1)
-
-item = create(:item , merchant: bike_shop)
+# require "factory_bot_rails"
+# include FactoryBot::Syntax::Methods
+#
+# Merchant.destroy_all
+# Item.destroy_all
+# User.destroy_all
+# Discount.destroy_all
+# Order.destroy_all
+#
+#
+# #merchants
+# bike_shop           = create(:merchant , name: "Meg's Bike Shop")
+# dog_shop            = create(:merchant , name: "Brian's Dog Shop")
+#
+# #bike_shop items
+# tire                = create(:item     , merchant: bike_shop , name: "Gatorskins" , image: "https://www.rei.com/media/4e1f5b05-27ef-4267-bb9a-14e35935f218?size=784x588"  , inventory: 1100)
+#
+# #dog_shop items
+# pull_toy            = create(:item     , merchant: dog_shop  , name: "Pull Toy"   , image: "http://lovencaretoys.com/image/cache/dog/tug-toy-dog-pull-9010_2-800x800.jpg" , inventory: 224)
+# dog_bone            = create(:item     , merchant: dog_shop  , name: "Dog Bone"   , image: "https://img.chewy.com/is/image/catalog/54226_MAIN._AC_SL1500_V1534449573_.jpg", inventory: 241)
+# random              = create(:item     , merchant: dog_shop)
+#
+# #bike_shop discounts
+# ten_percent_off_bs  = create(:discount , bike_shop , percent_off: 10 , minimum_quantity: 20)
+# five_percent_off_bs = create(:discount , bike_shop , percent_off: 5  , minimum_quantity: 10)
+#
+# #dog_shop discounts
+# ten_percent_off_ds  = create(:discount , dog_shop , percent_off: 10 , minimum_quantity: 20)
+# five_percent_off_ds = create(:discount , dog_shop , percent_off: 5  , minimum_quantity: 10)
+#
+# #users
+# admin_user          = create(:user     , email: 'admin@test.com',  role: 2 )
+# user                = create(:user     , email: 'user@test.com')
+# merch_user          = create(:user     , merchant: bike_shop, email: 'merchant@test.com', role: 1 )
+#
+# #orders
+# order_1             = create(:order    , user: user, status: 1)
+# order_2             = create(:order    , user: user)
+# order_3             = create(:order    , user: user, status: 2)
+# order_4             = create(:order    , user: user, status: 1)
+# order_5             = create(:order    , user: user, status: 3)
