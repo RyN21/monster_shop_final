@@ -28,7 +28,6 @@ RSpec.describe "Edit discount" do
   end
 
   it "has a link to a edit discount page from SHOW page" do
-
     within "#discount-#{@discount_1.id}" do
       click_link "#{@discount_1.name}"
     end
