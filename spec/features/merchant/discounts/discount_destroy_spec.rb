@@ -40,6 +40,11 @@ RSpec.describe "Destroy discount from Database" do
     click_button "Delete"
 
     expect(current_path).to eq("/merchant/discounts")
+    expect(page).to have_content("Discount has been deleted")
+    expect(page).to_not have_content(@discount_1.name)
+    expect(page).to_not have_content(@discount_1.description)
+    expect(page).to_not have_content(@discount_1.percent_off)
+    expect(page).to_not have_content(@discount_1.minimum_quantity)
   end
 
 end
