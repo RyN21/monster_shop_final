@@ -113,8 +113,11 @@ Button is also added to index page
 
 VISITOR/USER INPUT
 
+
 ================================================================================
-User Story 7, When a user places an order meeting requirements for discount
+User Story 7, When a user places items in cart
+and meets discount requirements
+User's cart has discounts
 
 As a visitor
 When adding items to the cart

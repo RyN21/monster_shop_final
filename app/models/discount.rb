@@ -10,8 +10,20 @@ class Discount < ApplicationRecord
     created_at.strftime("%d %B %Y")
   end
 
-  # def total_count_it_been_applied
+  # def apply_discount?(item_count)
+  #    minimum_quantity <= item
+  # end
+  #
+  # def discount(item)
   #   require "pry"; binding.pry
-  #   count
   # end
 end
+
+
+
+
+
+# def total_count_it_been_applied
+#   require "pry"; binding.pry
+#   count
+# end

@@ -9,7 +9,6 @@ class Merchant::DiscountsController < Merchant::BaseController
   end
 
   def new
-
   end
 
   def create

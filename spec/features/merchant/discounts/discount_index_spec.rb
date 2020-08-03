@@ -18,6 +18,7 @@ RSpec.describe "Discount index page" do
   end
 
   it "merchant has link to discount index page" do
+    expect(current_path).to eq("/merchant")
     click_link ("Discounts")
 
     expect(current_path).to eq("/merchant/discounts")

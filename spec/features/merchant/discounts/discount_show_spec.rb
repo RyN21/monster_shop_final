@@ -23,7 +23,6 @@ RSpec.describe "Discount show page" do
     within "#discount-#{@discount_1.id}" do
       click_on @discount_1.name
     end
-
     expect(page).to have_content(@discount_1.name)
     expect(page).to have_content(@discount_1.description)
     expect(page).to have_content(@discount_1.percent_off)

@@ -37,6 +37,7 @@ group :development, :test do
   gem 'pry'
   gem 'factory_bot_rails'
   gem 'faker'
+  gem 'table_print', '~> 1.5', '>= 1.5.7'
 end
 
 group :test do
