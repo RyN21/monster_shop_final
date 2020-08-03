@@ -63,6 +63,7 @@ RSpec.describe "User cart has discounts applied" do
     it "discounts only apply to items with the same merchant" do
       within "#item-#{@item_1.id}" do
         expect(page).to have_content("Subtotal: $10.00")
+        expect(page).to_not have_content("You saved:")
       end
       within "#item-#{@item_2.id}" do
         click_button 'More of This!'
@@ -70,6 +71,7 @@ RSpec.describe "User cart has discounts applied" do
         click_button 'More of This!'
         click_button 'More of This!'
         expect(page).to have_content("Subtotal: $45.00")
+        expect(page).to have_content("You saved: $5.00!")
       end
       within "#item-#{@item_3.id}" do
         click_button 'More of This!'
@@ -83,7 +85,7 @@ RSpec.describe "User cart has discounts applied" do
         click_button 'More of This!'
         click_button 'More of This!'
         expect(page).to have_content("Subtotal: $93.50")
-        expect(page).to_not have_content("You saved: 16.50!")
+        expect(page).to have_content("You saved: $16.50!")
       end
     end
   end

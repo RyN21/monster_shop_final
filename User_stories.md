@@ -22,6 +22,7 @@ Steps for project:
 Merchant CRUD functions on Bulk Discounts
 
 ================================================================================
+[x]
 User Story 1, Discount index page
 
 As a merchant employee
@@ -32,6 +33,7 @@ I see a link to discounts page
 
 
 ================================================================================
+[x]
 User Story 1.5 Discount index page displays attributes
 
 As a merchant employee
@@ -44,6 +46,7 @@ the page should display
 
 
 ================================================================================
+[x]
 User Story 2, Add bulk discount
 
 As a merchant employee
@@ -54,6 +57,7 @@ When visiting merchant discount page
 
 
 ================================================================================
+[x]
 User Story 3, Merchant employee add new discount
 
 As a merchant employee
@@ -70,6 +74,7 @@ then is redirected to merchants discount page where the discount is displayed
 
 
 ================================================================================
+[x]
 User Story 4, Discount show page
 
 As a merchant employee
@@ -86,6 +91,7 @@ page should show discount attributes
 
 
 ================================================================================
+[x]
 User Story 5, Discount edit page
 
 As a merchant employee
@@ -100,6 +106,7 @@ Button is also added to index page
 
 
 ================================================================================
+[x]
 User Story 6, Delete Discount
 
 As a merchant employee
@@ -115,6 +122,7 @@ VISITOR/USER INPUT
 
 
 ================================================================================
+[x]
 User Story 7, When a user places items in cart
 and meets discount requirements
 User's cart has discounts
@@ -127,15 +135,17 @@ a flash message indicate bulk discount has been added
 
 
 ================================================================================
+[x]
 User Story 8, Bulk discount reflected in cart price
 
 As a visitor
 When adding items to the cart
 and adding the minimum quantity of an item
-and the discount is applied to thew item within the cart
+and the discount is applied to the item within the cart
 
 
 ================================================================================
+[x]
 User Story 9, User places order
 
 As a visitor
@@ -145,6 +155,7 @@ Order price reflects discount on that one item
 
 
 ================================================================================
+[x]
 User Story 10, Multiple discounts added to different items
 
 As a user
@@ -153,13 +164,13 @@ the correct price is reflected on each item
 
 
 ================================================================================
-User Story 11, User can see original price along with discounted price
+[x]
+User Story 11, User can see money saved along with discounted price
 
 As a user
 when an item has met the required quantity to receive bulk discount
 the user can see
 - new discounted price
-- price without discount
 - dollar amount the user is saving
 
 
@@ -168,6 +179,7 @@ the user can see
 Multiple discount conflict
 
 ================================================================================
+[x]
 User Story 12, Multiple discounts on one item
 
 As a user
@@ -178,10 +190,12 @@ meets the requirement of TWO or more discounts
 
 
 ================================================================================
+[]
 User Story 13, Add total count discount method
 
 
 ================================================================================
+[]
 User story 14, When merchant is destroyed
 
 Discounts get destroyed with it
