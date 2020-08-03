@@ -61,6 +61,10 @@ class Cart
     subtotal
   end
 
+  def you_saved(item_id)
+    (count_of(item_id) * Item.find(item_id).price) - subtotal_of(item_id)
+  end
+
   def limit_reached?(item_id)
     count_of(item_id) == Item.find(item_id).inventory
   end
