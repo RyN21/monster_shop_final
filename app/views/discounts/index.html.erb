@@ -1,0 +1,9 @@
+<h2>All Discounts:</h2>
+
+<% @discounts.each do |discount| %>
+<p>Belongs to: <%= discount.merchant.name %></p>
+<p>Name: <%= discount.name %></p>
+<p>Description: <%= discount.description %></p>
+<p>Percent Off: <%= discount.percent_off %></p>
+<p>Minimum Quantity Ordered: <%= discount.minimum_quantity %></p>
+<% end %>

@@ -12,11 +12,14 @@ RSpec.describe "Discount Index Page" do
     @discount_2   = create(:discount, merchant: @merchant_1,   percent_off: 10, minimum_quantity: 5)
     @discount_3   = create(:discount, merchant: @merchant_2,   percent_off: 15, minimum_quantity: 10)
   end
-  it "displays discounts info" do
+  it "As a visitor I can seed all discounts and their info" do
     visit '/discounts'
 
     expect(page).to have_content(@discount_1.name)
     expect(page).to have_content(@discount_2.name)
     expect(page).to have_content(@discount_3.name)
+    expect(page).to have_content(@discount_1.merchant.name)
+    expect(page).to have_content(@discount_2.merchant.name)
+    expect(page).to have_content(@discount_3.merchant.name)
   end
 end

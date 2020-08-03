@@ -11,11 +11,6 @@ Merchants add bulk discount rates for all of their inventory. These apply automa
 1. Final discounted prices should appear on the order's show page.
 
 
-Steps for project:
-1. create user stories. May need to adjust as I go.
-  -user needs full CRUD functionality on all bulk discounts
-1. add factory bot.
-
 
 ================================================================================
 
