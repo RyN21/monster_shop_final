@@ -14,6 +14,7 @@
       <%= button_to 'More of This!', "/cart/more/#{item.id}", method: :patch unless cart.limit_reached?(item.id) %>
       <%= button_to 'Less of This!', "/cart/less/#{item.id}", method: :patch %>
       <%= button_to 'Remove', "/cart/#{item.id}", method: :delete %>
+
     </section>
   <% end %>
   <section id='checkout'>

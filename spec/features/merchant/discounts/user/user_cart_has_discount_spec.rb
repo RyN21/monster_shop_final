@@ -10,7 +10,7 @@ RSpec.describe "User cart has discounts applied" do
     @item_4       = create(:item,     merchant: @merchant_2, inventory:   50, price: 10)
     @discount_1   = create(:discount, merchant: @merchant_1,   percent_off: 5,  minimum_quantity: 2)
     @discount_2   = create(:discount, merchant: @merchant_1,   percent_off: 10, minimum_quantity: 5)
-    @discount_3   = create(:discount, merchant: @merchant_1,   percent_off: 15, minimum_quantity: 10)
+    @discount_3   = create(:discount, merchant: @merchant_2,   percent_off: 15, minimum_quantity: 10)
 
     @user         = create(:user)
 
@@ -26,13 +26,22 @@ RSpec.describe "User cart has discounts applied" do
 
     visit item_path(@item_2)
     click_button 'Add to Cart'
+    visit item_path(@item_2)
+    click_button 'Add to Cart'
+    visit item_path(@item_2)
+    click_button 'Add to Cart'
 
+    visit item_path(@item_3)
+    click_button 'Add to Cart'
+    visit item_path(@item_3)
+    click_button 'Add to Cart'
+    visit item_path(@item_3)
+    click_button 'Add to Cart'
     visit item_path(@item_3)
     click_button 'Add to Cart'
 
 
     visit '/cart'
-    save_and_open_page
   end
 
   it "has discounts appropriately" do
@@ -41,10 +50,12 @@ RSpec.describe "User cart has discounts applied" do
     end
 
     within "#item-#{@item_2.id}" do
-      click_button 'More of This!'
-      expect(page).to have_content("Subtotal: $19.00")
-      click_button 'More of This!'
       expect(page).to have_content("Subtotal: $28.50")
+      click_button 'More of This!'
+      click_button 'More of This!'
+      click_button 'More of This!'
+      click_button 'More of This!'
+      expect(page).to have_content("Subtotal: $66.50")
     end
 
     within "#item-#{@item_3.id}" do
@@ -53,17 +64,41 @@ RSpec.describe "User cart has discounts applied" do
       click_button 'More of This!'
       click_button 'More of This!'
       click_button 'More of This!'
-      expect(page).to have_content("Subtotal: $54.00")
+      click_button 'More of This!'
+      click_button 'More of This!'
+      expect(page).to have_content("Subtotal: $93.50")
     end
   end
 end
 
-# User Story 7, When a user places items in cart
-# and meets discount requirements
-# User's cart has discounts
+
+
+# If item from a mechant meets the merchants discount requiements, then the discount is applied to that item only
+# item merchant. item discount.
 #
-# As a visitor
-# When adding items to the cart
-# and adding the minimum quantity of an item
-# a bulk discount is added to that one item only
-# a flash message indicate bulk discount has been added
+# discount can have many items
+# item has one discount... but not needed to be validated ==== but only one applies to it, the one with the greater savings
+#
+# item_discount table?
+#
+# create a joins table to apply discounts?
+# So any item that where quantity is >= than minimum_quantity, the discount applies
+#
+# Joins table...
+# I want to select ITEM
+#
+#
+# ITEM                   DISCOUNT               MERCHANT
+#
+# SELECT.* items         minimum_quantity       id
+#                        percent_off
+#                        merchant_id
+#
+# Where item.merchant_id == discount.merchant_id
+
+
+
+# was in show page:
+# <% @discounts.each do |discount| %>
+#   <%= discount(subtotal_of(item.id)) if discount.apply_discount?(cart.count_of(item.id)) %>
+# <% end %>

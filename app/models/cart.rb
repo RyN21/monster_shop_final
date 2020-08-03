@@ -37,7 +37,23 @@ class Cart
   end
 
   def subtotal_of(item_id)
-    @contents[item_id.to_s] * Item.find(item_id).price
+    subtotal = 0
+    item = Item.find(item_id)
+    discounts = Discount.all.find_all do |discount|
+      discount.merchant_id == item.merchant_id
+    end
+    # ORDER DISCOUNTS FROM LARGEST TO SMALLEST QUANTITY
+    discounts.sort_by!(&:minimum_quantity).reverse!
+    discounts.each do |discount|
+      if @contents[item_id.to_s] >= discount.minimum_quantity
+        price_before_discount = @contents[item_id.to_s] * Item.find(item_id).price
+        percent = discount.percent_off.to_f / 100
+        subtotal = price_before_discount - (price_before_discount * percent)
+      else
+        subtotal = @contents[item_id.to_s] * Item.find(item_id).price
+      end
+    end
+    subtotal
   end
 
   def limit_reached?(item_id)

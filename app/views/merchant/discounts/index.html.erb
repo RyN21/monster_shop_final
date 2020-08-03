@@ -5,7 +5,7 @@
     <section id="discount-<%= discount.id %>">
       <%= link_to discount.name, "/merchant/discounts/#{discount.id}" %>
       <p>Description: <%= discount.description %></p>
-      <p>Percent Off: <%= discount.percent_off %></p>
+      <p>Percent Off: <%= number_to_percentage(discount.percent_off, precision: 0) %></p>
       <p>Minimum Quantity Per Item: <%= discount.minimum_quantity %></p>
     <%= button_to "Edit", "/merchant/discounts/#{discount.id}/edit", method: :get %>
     <%= button_to "Delete", "/merchant/discounts/#{discount.id}", method: :delete %>
