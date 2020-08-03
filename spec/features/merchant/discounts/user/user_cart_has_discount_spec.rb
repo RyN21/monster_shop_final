@@ -86,6 +86,15 @@ RSpec.describe "User cart has discounts applied" do
       end
     end
   end
+
+  it "User can see price with and without the discount and how much they saved" do
+    within "#item-#{@item_1.id}" do
+      click_button 'More of This!'
+      expect(page).to have_content("Subtotal: $20.00")
+      expect(page).to have_content("Discounted Price: $19.00")
+      expect(page).to have_content("You saved: $1.00!")
+    end
+  end
 end
 
 
