@@ -37,7 +37,7 @@ class Cart
   end
 
   def subtotal_of(item_id)
-    subtotal = 0
+    subtotal = nil
     item = Item.find(item_id)
     discounts = Discount.all.find_all do |discount|
       discount.merchant_id == item.merchant_id
@@ -45,12 +45,13 @@ class Cart
     # ORDER DISCOUNTS FROM LARGEST TO SMALLEST QUANTITY
     discounts.sort_by!(&:minimum_quantity).reverse!
     discounts.each do |discount|
-      if @contents[item_id.to_s] >= discount.minimum_quantity
-        price_before_discount = @contents[item_id.to_s] * Item.find(item_id).price
-        percent = discount.percent_off.to_f / 100
-        subtotal = price_before_discount - (price_before_discount * percent)
+      if count_of(item_id) >= discount.minimum_quantity
+        price_before_discount = count_of(item_id) * item.price
+        percent_float = discount.percent_off.to_f / 100
+        subtotal = price_before_discount - (price_before_discount * percent_float)
+        break
       else
-        subtotal = @contents[item_id.to_s] * Item.find(item_id).price
+        subtotal = count_of(item_id) * item.price
       end
     end
     subtotal

@@ -26,47 +26,64 @@ RSpec.describe "User cart has discounts applied" do
 
     visit item_path(@item_2)
     click_button 'Add to Cart'
-    visit item_path(@item_2)
-    click_button 'Add to Cart'
-    visit item_path(@item_2)
-    click_button 'Add to Cart'
 
     visit item_path(@item_3)
     click_button 'Add to Cart'
-    visit item_path(@item_3)
-    click_button 'Add to Cart'
-    visit item_path(@item_3)
-    click_button 'Add to Cart'
-    visit item_path(@item_3)
-    click_button 'Add to Cart'
-
 
     visit '/cart'
   end
 
-  it "has discounts appropriately" do
-    within "#item-#{@item_1.id}" do
-      expect(page).to have_content("Subtotal: $10.00")
+  describe "Applies discounts appropriately" do
+    it "does not apply if minimum_quantity is not met" do
+      within "#item-#{@item_1.id}" do
+        expect(page).to have_content("Subtotal: $10.00")
+      end
     end
 
-    within "#item-#{@item_2.id}" do
-      expect(page).to have_content("Subtotal: $28.50")
-      click_button 'More of This!'
-      click_button 'More of This!'
-      click_button 'More of This!'
-      click_button 'More of This!'
-      expect(page).to have_content("Subtotal: $66.50")
+    it "applies to item when minimum_quantity is met" do
+      within "#item-#{@item_2.id}" do
+        click_button 'More of This!'
+        expect(page).to have_content("Subtotal: $19.00")
+      end
     end
 
-    within "#item-#{@item_3.id}" do
-      click_button 'More of This!'
-      click_button 'More of This!'
-      click_button 'More of This!'
-      click_button 'More of This!'
-      click_button 'More of This!'
-      click_button 'More of This!'
-      click_button 'More of This!'
-      expect(page).to have_content("Subtotal: $93.50")
+    it "only the larger discount is applied when item quantity meets more than one discount requiements" do
+      within "#item-#{@item_1.id}" do
+        expect(page).to have_content("Subtotal: $10.00")
+        click_button 'More of This!'
+        expect(page).to have_content("Subtotal: $19.00")
+        click_button 'More of This!'
+        click_button 'More of This!'
+        click_button 'More of This!'
+        click_button 'More of This!'
+        expect(page).to have_content("Subtotal: $54.00")
+      end
+    end
+
+    it "discounts only apply to items with the same merchant" do
+      within "#item-#{@item_1.id}" do
+        expect(page).to have_content("Subtotal: $10.00")
+      end
+      within "#item-#{@item_2.id}" do
+        click_button 'More of This!'
+        click_button 'More of This!'
+        click_button 'More of This!'
+        click_button 'More of This!'
+        expect(page).to have_content("Subtotal: $45.00")
+      end
+      within "#item-#{@item_3.id}" do
+        click_button 'More of This!'
+        click_button 'More of This!'
+        click_button 'More of This!'
+        click_button 'More of This!'
+        click_button 'More of This!'
+        click_button 'More of This!'
+        click_button 'More of This!'
+        click_button 'More of This!'
+        click_button 'More of This!'
+        click_button 'More of This!'
+        expect(page).to have_content("Subtotal: $93.50")
+      end
     end
   end
 end
@@ -102,3 +119,10 @@ end
 # <% @discounts.each do |discount| %>
 #   <%= discount(subtotal_of(item.id)) if discount.apply_discount?(cart.count_of(item.id)) %>
 # <% end %>
+
+
+
+# NOTES TO ADD TO APP
+#
+#
+#
