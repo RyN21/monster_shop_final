@@ -29,19 +29,19 @@ ten_percent_off_ds  = dog_shop.discounts.create(name: "10 percent off!" , descri
 five_percent_off_ds = dog_shop.discounts.create(name: "5 percent off!"  , description: "Save big when you buy bulk", percent_off: 5  , minimum_quantity: 10)
 
 #users
-admin_user          = User.create!(name: "Ryan L",   address: "123 7th Ave.", city: "Denver", state: "CO", zip: "80121" , email: 'admin@test.com'   , password: "123345", role: 2)
-user                = User.create!(name: "Reija L",  address: "123 7th Ave.", city: "Denver", state: "CO", zip: "80121" , email: 'user@test.com'    , password: "123345", role: 0)
-merch_user          = User.create!(name: "Olivia L", address: "123 7th Ave.", city: "Denver", state: "CO", zip: "80121" , email: 'merchant@test.com', password: "123345", role: 1)
+admin_user          = User.create(name: "Ryan L",   address: "123 7th Ave.", city: "Denver", state: "CO", zip: "80121" , email: 'admin@test.com'   , password: "123456", role: 2)
+user                = User.create(name: "Reija L",  address: "123 7th Ave.", city: "Denver", state: "CO", zip: "80121" , email: 'user@test.com'    , password: "123456", role: 0)
+merch_user          = User.create(name: "Olivia L", address: "123 7th Ave.", city: "Denver", state: "CO", zip: "80121" , email: 'merchant@test.com', password: "123456", role: 1)
 
 #orders
-@order_1            = user.orders.create!
-@order_2            = user.orders.create!
+order_1            = user.orders.create
+order_2            = user.orders.create
 
 #order items
-@order_1.order_items.create!(item: handlebar, price: tire.price, quantity: 1)
-@order_1.order_items.create!(item: tire, price: tire.price, quantity: 6)
-@order_2.order_items.create!(item: handlebar, price: handlebar.price, quantity: 3)
-@order_2.order_items.create!(item: pull_toy, price: pull_toy.price, quantity: 7)
+order_1.order_items.create(item: handlebar, price: tire.price     , quantity: 1)
+order_1.order_items.create(item: tire     , price: tire.price     , quantity: 6)
+order_2.order_items.create(item: handlebar, price: handlebar.price, quantity: 3)
+order_2.order_items.create(item: pull_toy , price: pull_toy.price , quantity: 7)
 
 # require "factory_bot_rails"
 # include FactoryBot::Syntax::Methods
