@@ -37,6 +37,10 @@ class Cart
   end
 
   def subtotal_of(item_id)
+    @contents[item_id.to_s] * Item.find(item_id).price
+  end
+
+  def discount_price_of(item_id)
     subtotal = nil
     item = Item.find(item_id)
     discounts = Discount.all.find_all do |discount|
@@ -59,6 +63,10 @@ class Cart
       subtotal = count_of(item_id) * item.price
     end
     subtotal
+  end
+
+  def you_saved(item_id)
+    subtotal_of(item_id) - discount_price_of(item_id)
   end
 
   def limit_reached?(item_id)
