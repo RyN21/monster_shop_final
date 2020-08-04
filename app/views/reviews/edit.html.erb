@@ -1,3 +1,4 @@
+<div align='center'>
 <%= form_tag review_path(@review), method: :patch do %>
   <%= label_tag :title %>
   <%= text_field_tag :title, @review.title %>
@@ -10,3 +11,4 @@
 
   <%= submit_tag 'Update Review' %>
 <% end %>
+</div>
