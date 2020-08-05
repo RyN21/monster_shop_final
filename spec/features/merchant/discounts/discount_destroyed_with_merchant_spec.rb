@@ -12,7 +12,7 @@ RSpec.describe "Discounts deleted when Merchant is deleted" do
     @discount_2   = create(:discount, merchant: @merchant_1,   name: "What a deal!",   percent_off: 10, minimum_quantity: 5)
     @discount_3   = create(:discount, merchant: @merchant_2,   name: "Buy and save!",   percent_off: 15, minimum_quantity: 10)
 
-    @merchant     = create(:user, role: 1)
+    @merchant     = create(:user, merchant: @merchant_1, role: 1)
 
     visit '/login'
     within  "form" do
@@ -20,7 +20,6 @@ RSpec.describe "Discounts deleted when Merchant is deleted" do
       fill_in :password,	with: @merchant.password
       click_on 'Log In'
     end
-
   end
   it 'I can click button to destroy merchant from database' do
     visit "/merchants/#{@merchant_1.id}"

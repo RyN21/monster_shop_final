@@ -1,14 +1,19 @@
-<%= link_to "Add New Discount", '/merchant/discounts/new' %>
+<h3><%= link_to "Add New Discount", '/merchant/discounts/new' %></h3>
+<br><br><br>
 
 <section class="discounts">
   <% @discounts.each do |discount| %>
     <section id="discount-<%= discount.id %>">
-      <%= link_to discount.name, "/merchant/discounts/#{discount.id}" %>
-      <p>Description: <%= discount.description %></p>
-      <p>Percent Off: <%= number_to_percentage(discount.percent_off, precision: 0) %></p>
-      <p>Minimum Quantity Per Item: <%= discount.minimum_quantity %></p>
-    <%= button_to "Edit", "/merchant/discounts/#{discount.id}/edit", method: :get %>
-    <%= button_to "Delete", "/merchant/discounts/#{discount.id}", method: :delete %>
+      <div align='center'>
+        <% if discount.merchant_id == current_user.merchant_id %>
+          <%= link_to discount.name, "/merchant/discounts/#{discount.id}" %>
+          <p>Description: <%= discount.description %></p>
+          <p>Percent Off: <%= number_to_percentage(discount.percent_off, precision: 0) %></p>
+          <p>Minimum Quantity Per Item: <%= discount.minimum_quantity %></p>
+          <%= button_to "Edit", "/merchant/discounts/#{discount.id}/edit", method: :get %>
+          <%= button_to "Delete", "/merchant/discounts/#{discount.id}", method: :delete %>
+        <% end %>  
+      </div>
     </section>
   <% end %>
 </section>

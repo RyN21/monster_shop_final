@@ -28,7 +28,7 @@ five_percent_off_ds = dog_shop.discounts.create(name: "5 percent off!"  , descri
 #users
 admin_user          = User.create(name: "Ryan L",   address: "123 7th Ave.", city: "Denver", state: "CO", zip: "80121" , email: 'admin@test.com'   , password: "123456", role: 2)
 user                = User.create(name: "Reija L",  address: "123 7th Ave.", city: "Denver", state: "CO", zip: "80121" , email: 'user@test.com'    , password: "123456", role: 0)
-merch_user          = User.create(name: "Olivia L", address: "123 7th Ave.", city: "Denver", state: "CO", zip: "80121" , email: 'merchant@test.com', password: "123456", role: 1)
+merch_user          = bike_shop.users.create(name: "Olivia L", address: "123 7th Ave.", city: "Denver", state: "CO", zip: "80121" , email: 'merchant@test.com', password: "123456", role: 1)
 
 #orders
 order_1            = user.orders.create

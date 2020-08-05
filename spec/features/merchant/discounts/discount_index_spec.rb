@@ -5,9 +5,9 @@ RSpec.describe "Discount index page" do
     @merchant   = create(:merchant)
     @merch_user = create(:user, merchant: @merchant, email: 'merchant@test.com', role: 1)
 
-    @discount_1 = create(:discount)
-    @discount_2 = create(:discount)
-    @discount_3 = create(:discount)
+    @discount_1 = create(:discount, merchant: @merchant)
+    @discount_2 = create(:discount, merchant: @merchant)
+    @discount_3 = create(:discount, merchant: @merchant)
 
     visit '/login'
     within  "form" do

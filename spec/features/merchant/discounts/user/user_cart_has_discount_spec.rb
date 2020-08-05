@@ -90,7 +90,7 @@ RSpec.describe "User cart has discounts applied" do
     end
   end
 
-  describe "It can display Subtotal, Discount Price, and how much was Saved" do
+  describe "It can display the new Subtotal and how much was Saved" do
     it "User can see price with and without the discount and how much they saved" do
       within "#item-#{@item_1.id}" do
         click_button 'More of This!'
@@ -99,7 +99,7 @@ RSpec.describe "User cart has discounts applied" do
       end
     end
 
-    it "User can see price with and without the discount and how much they saved" do
+    it "User cannot see you saved if there was no discount" do
       within "#item-#{@item_1.id}" do
         expect(page).to have_content("Subtotal: $10.00")
         expect(page).to_not have_content("You saved:")
