@@ -38,6 +38,7 @@ class MerchantsController < ApplicationController
     merchant = Merchant.find(params[:id])
     if merchant.order_items.empty?
       merchant.destroy
+      reset_session
     else
       flash[:notice] = "#{merchant.name} can not be deleted - they have orders!"
     end
