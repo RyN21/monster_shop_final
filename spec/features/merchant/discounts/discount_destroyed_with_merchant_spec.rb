@@ -8,9 +8,9 @@ RSpec.describe "Discounts deleted when Merchant is deleted" do
     @item_2       = create(:item,     merchant: @merchant_1,   inventory:   50, price: 10)
     @item_3       = create(:item,     merchant: @merchant_2,   inventory:   50, price: 10)
     @item_4       = create(:item,     merchant: @merchant_2,   inventory:   50, price: 10)
-    @discount_1   = create(:discount, merchant: @merchant_1,   percent_off: 5,  minimum_quantity: 2)
-    @discount_2   = create(:discount, merchant: @merchant_1,   percent_off: 10, minimum_quantity: 5)
-    @discount_3   = create(:discount, merchant: @merchant_2,   percent_off: 15, minimum_quantity: 10)
+    @discount_1   = create(:discount, merchant: @merchant_1,   name: "Save big!",   percent_off: 5,  minimum_quantity: 2)
+    @discount_2   = create(:discount, merchant: @merchant_1,   name: "What a deal!",   percent_off: 10, minimum_quantity: 5)
+    @discount_3   = create(:discount, merchant: @merchant_2,   name: "Buy and save!",   percent_off: 15, minimum_quantity: 10)
 
     @merchant     = create(:user, role: 1)
 

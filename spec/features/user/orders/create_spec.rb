@@ -26,7 +26,6 @@ RSpec.describe 'Create Order' do
       click_button 'Check Out'
 
       order = Order.last
-
       expect(current_path).to eq('/profile/orders')
       expect(page).to have_content('Order created successfully!')
       expect(page).to have_link('Cart: 0')

@@ -5,9 +5,9 @@ RSpec.describe "Destroy discount from Database" do
     @merchant   = create(:merchant)
     @merch_user = create(:user, merchant: @merchant, email: 'merchant@test.com', role: 1)
 
-    @discount_1 = create(:discount, merchant: @merchant)
-    @discount_2 = create(:discount, merchant: @merchant)
-    @discount_3 = create(:discount, merchant: @merchant)
+    @discount_1 = create(:discount, merchant: @merchant, name: "Save big!",          description: "Best deals on the web")
+    @discount_2 = create(:discount, merchant: @merchant, name: "What a deal!",       description: "Can't find better deals anywhere")
+    @discount_3 = create(:discount, merchant: @merchant, name: "Buy more and save!", description: "The more you buy the more you save")
 
     visit '/login'
     within  "form" do

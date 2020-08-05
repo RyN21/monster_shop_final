@@ -24,6 +24,7 @@ Rails.application.routes.draw do
   get '/profile', to: 'users#show'
   get '/profile/edit', to: 'users#edit'
   get '/profile/edit_password', to: 'users#edit_password'
+
   post '/orders', to: 'user/orders#create'
   get '/profile/orders', to: 'user/orders#index'
   get '/profile/orders/:id', to: 'user/orders#show'
@@ -38,6 +39,7 @@ Rails.application.routes.draw do
   namespace :merchant do
     get '/', to: 'dashboard#index', as: :dashboard
 
+  # resources :discounts
     get '/discounts', to: 'discounts#index', as: :discounts
     get '/discounts/new', to: 'discounts#new'
     post '/discounts', to: 'discounts#create'
@@ -46,7 +48,6 @@ Rails.application.routes.draw do
     post '/discounts/:id', to: 'discounts#update'
     delete '/discounts/:id', to: 'discounts#destroy'
 
-    # resources :discounts
     resources :orders, only: :show
     resources :items, only: [:index, :new, :create, :edit, :update, :destroy]
     put '/items/:id/change_status', to: 'items#change_status'

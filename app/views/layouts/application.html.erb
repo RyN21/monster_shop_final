@@ -17,12 +17,12 @@
         <%= link_to "Cart: #{cart.count}", cart_path unless current_user && current_admin?%>
       </div>
       <div class ="topnav-right">
-      <%= link_to 'Register', registration_path unless current_user %>
-      <%= link_to 'Log In', login_path unless current_user %>
-      <% if current_user %>
-        <%= link_to 'Profile', profile_path if !current_admin? %>
-        <%= link_to 'Log Out', logout_path %>
-        <p style="color:white">Logged in as <%= current_user.name %></p>
+        <%= link_to 'Register', registration_path unless current_user %>
+        <%= link_to 'Log In', login_path unless current_user %>
+        <% if current_user %>
+          <%= link_to 'Profile', profile_path %>
+          <%= link_to 'Log Out', logout_path %>
+          <p style="color:white">Logged in as <%= current_user.name %></p>
       </div>
       <div class ="topnav-center">
         <% if current_merchant_user? %>
