@@ -46,4 +46,20 @@ RSpec.describe "Add bulk discount" do
       expect(page).to have_content(new_discount.minimum_quantity)
     end
   end
+
+  it "if form is incomplete" do
+    visit '/merchant/discounts/new'
+
+    fill_in 'Name', with: ""
+    fill_in 'Description', with: "Get 5% of any item when you purchase 20 or more of that item!"
+    fill_in 'Percent off', with: 5
+    fill_in 'Minimum quantity', with: 10
+
+    click_button "Create Discount"
+
+    new_discount = Discount.last
+
+    expect(current_path).to eq('/merchant/discounts/new')
+    expect(page).to have_content("Form incomplete. Please fill out all fields")
+  end
 end

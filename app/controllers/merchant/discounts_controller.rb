@@ -17,7 +17,7 @@ class Merchant::DiscountsController < Merchant::BaseController
     if discount.save
       redirect_to '/merchant/discounts'
     else
-      generate_flash(discount)
+    flash[:error] = "Form incomplete. Please fill out all fields"
       redirect_to '/merchant/discounts/new'
     end
   end
@@ -31,7 +31,7 @@ class Merchant::DiscountsController < Merchant::BaseController
     if @discount.update(discount_params)
       redirect_to "/merchant/discounts/#{@discount.id}"
     else
-      redirect_to "/merchant/discounts/#{discount.id}/edit"
+      redirect_to "/merchant/discounts/#{@discount.id}/edit"
     end
   end
 

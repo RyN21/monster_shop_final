@@ -31,7 +31,6 @@ RSpec.describe "Edit discount" do
     within "#discount-#{@discount_1.id}" do
       click_link "#{@discount_1.name}"
     end
-    # save_and_open_page
     click_button "Edit"
 
     expect(current_path).to eq("/merchant/discounts/#{@discount_1.id}/edit")
@@ -53,5 +52,20 @@ RSpec.describe "Edit discount" do
 
     expect(page).to have_content(@discount_1.name)
     expect(page).to have_content("30")
+  end
+
+  it "if form not filled out, redirect back to edit page" do
+    visit "/merchant/discounts/#{@discount_1.id}"
+
+    click_button "Edit"
+
+    fill_in 'Name', with: ""
+    fill_in 'Description', with: @discount_1.description
+    fill_in 'Percent off', with: @discount_1.percent_off
+    fill_in 'Minimum quantity', with: 30
+
+    click_button "Submit"
+
+    expect(current_path).to eq("/merchant/discounts/#{@discount_1.id}/edit")
   end
 end
